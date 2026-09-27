@@ -1,0 +1,10 @@
+{
+  "name": "Uncle's Chinese - Smart QR Dining & Kitchen Management",
+  "description": "Smart contactless QR ordering, table service call, KOT kitchen management, and waiter alerts for Uncle's Chinese Restaurant.",
+  "requestFramePermissions": [
+    "camera"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
