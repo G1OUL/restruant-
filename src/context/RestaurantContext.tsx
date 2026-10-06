@@ -53,6 +53,7 @@ interface RestaurantContextType {
   serviceAlerts: ServiceAlert[];
   sendServiceAlert: (type: ServiceAlertType, customMessage?: string) => void;
   resolveServiceAlert: (alertId: string) => void;
+  cancelServiceAlert: (alertId: string) => void;
   currentTableActiveAlert: ServiceAlert | null;
 
   // Sound feedback
@@ -459,6 +460,8 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       request_bill: 'Bill requested (ready for payment)',
       water: 'Drinking water refill requested',
       cutlery: 'Extra plates & spoons requested',
+      clean_table: 'Table clearing & wiping requested',
+      sauces: 'Extra Schezwan dip & sauces requested',
     };
 
     const newAlert: ServiceAlert = {
@@ -478,6 +481,10 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
     setServiceAlerts((prev) =>
       prev.map((a) => (a.id === alertId ? { ...a, isResolved: true } : a))
     );
+  };
+
+  const cancelServiceAlert = (alertId: string) => {
+    setServiceAlerts((prev) => prev.filter((a) => a.id !== alertId));
   };
 
   const currentTableActiveAlert =
@@ -513,6 +520,7 @@ export const RestaurantProvider: React.FC<{ children: React.ReactNode }> = ({ ch
         serviceAlerts,
         sendServiceAlert,
         resolveServiceAlert,
+        cancelServiceAlert,
         currentTableActiveAlert,
         playNotificationSound: playWebAudioTone,
       }}

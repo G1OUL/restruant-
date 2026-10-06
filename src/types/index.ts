@@ -67,7 +67,7 @@ export interface Order {
   updatedAt: string;
 }
 
-export type ServiceAlertType = 'call_waiter' | 'request_bill' | 'water' | 'cutlery';
+export type ServiceAlertType = 'call_waiter' | 'request_bill' | 'water' | 'cutlery' | 'clean_table' | 'sauces';
 
 export interface ServiceAlert {
   id: string;
